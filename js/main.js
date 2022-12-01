@@ -140,3 +140,20 @@ function saludar(){
    const sumarN =(num1, num2)=>{
     return num1 + num2;
    }
+ let opcion = prompt("Ingresa un nombre");
+
+switch (opcion) {
+  caso "ANA":
+    consola. log("Hola ANA");
+    quebrar;
+  caso "Julian":
+    consola. log("Hola Julian");
+    quebrar;
+  caso "Clara":
+    consola. log("Hola Clara");
+    quebrar;
+
+  Valor predeterminado:
+    consola. log("No te conozco");
+    quebrar;
+}
