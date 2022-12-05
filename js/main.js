@@ -39,7 +39,7 @@ if (exito) {
 
         if (venta <= stock) {
           stock = stock - venta;
-          alert("Vendiste" + venta + " Tu nuevo stock en unidades del lirbo 1 es " + stock);
+          alert("Vendiste" + venta + " Tu nuevo stock en unidades del libro 1 es " + stock);
         } else {
           alert("Articulo sin stock");
         }
