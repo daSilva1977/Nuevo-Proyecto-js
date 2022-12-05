@@ -1,159 +1,68 @@
-//Funciones declaracion
+let savedUsuario = "Mariana";
 
-function saludar(){
-    //bloque de ejecucion
-    console.log("Hola Carola!!!!");
-  }
-  
-  //llamado o invocacion
-  /* saludar() 
-  saludar() 
-  saludar() */ 
-  
-  function ingresarNombre(){
-    let nombreIngreso= prompt("Ingresa tu nombre");
-    console.log(nombreIngreso);
-  }
-  /* 
-  for (let index = 1; index <= 3; index++) {
-    
-    ingresarNombre()
-    
-  } */
-  
-  //parametros y argumentos
-  function conParametros(param1, param2){
-    console.log(param1 + param2);
-  }
-  /* let nombre= "Dani";
-  conParametros(1,4,9);
-  conParametros("Hola"," Dani");
-  conParametros("Hola",nombre); */
-  
-  let result= 0;
-  /* function suma(num1, num2){
-    result= num1 + num2;
-  }
-  function resta(num1, num2){
-    result= num1 - num2;
-  } */
-  //console.log(result);
-  
-  function mostrar(mensaje){
-    console.log(mensaje);
-  }
-  
-  /* suma(9,11) */
-  //resta(23, 10);
-  //mostrar(result)
-  //resta(-10, 10);
-  //mostrar(result)
-  
-  //resultado de función
-  function sumar(num1, num2){
-    return num1 + num2;
-  }
-  
-  let resultado = sumar(3,7);
-  
-  //console.log(sumar(10,5));
-  let num1;
-  function calculator(num1,num2, operator){
-  
-  switch (operator) {
-    case "+":
-      return num1 + num2;
-      //break; con retun no hace falta break
-    case "-":
-      return num1 - num2;
-  
-    case "*":
-      return num1 * num2;
-  
-    case "/":
-      //return num1 / num2;
-      if (num2==0){
-        return "no se puede dividir por 0"
-        }else{
-        return num1/num2;
-      }
-  
-  
-    default:
-      return 0;
-      //break;
-  }
-  
-  }
-   //mostrar(calculator(3,6,'+'))
-   //mostrar(calculator("+",6,3)) pasar en el orden correcto
-  /* 
-   mostrar(calculator(9,-12, '-'))
-   mostrar(calculator(33,10, '*'))
-   mostrar(calculator(0,10, '/')) */
-  
-   /* let total=0;//variable global
-   function add(num1,num2){
-    total= num1 + num2;
-   }
-   add(3,9);
-   console.log(total); */
-  
-   function add(num1, num2) {
-    let total= num1 + num2;
-    return total;
-  }
-  
-  //console.log(total);
-  mostrar(add(3,9));
-  
-  for (let i = 0; i < 10; i++) {
-  
-    //console.log(i);
-  }
-  //console.log(i);
-  /* 
-  let saludo = "Hola"
-  if(true){
-    console.log(saludo);
-  }
-  console.log(saludo); */
-  
-  //funciones anonimas
-  /* const saludo = function(){
-    console.log("Hola Soy una funcion anonima");
-  }
-  saludo() */
-  /* saludo="hola"
-  console.log(saludo);  no se puede reasignar */
-  //funcion flecha ()=>{}
-  
-  const funcionFlecha= ()=>{
-    console.log("Hola Soy una funcion flecha");
-  }
-  //funcionFlecha()
-  
-  
-  const saludo= mensaje=> {return mensaje}//.el return es implicito
-   console.log(saludo("hola"));
-  
-   const sumarN =(num1, num2)=>{
-    return num1 + num2;
-   }
- let opcion = prompt("Ingresa un nombre");
+function login() {
+  let ingresar = false;
 
-switch (opcion) {
-  caso "ANA":
-    consola. log("Hola ANA");
-    quebrar;
-  caso "Julian":
-    consola. log("Hola Julian");
-    quebrar;
-  caso "Clara":
-    consola. log("Hola Clara");
-    quebrar;
+  for (let i = 2; i >= 0; i--) {
+    let userPIN = prompt("Ingresa tu Usuario Tenés " + (i + 1) + " intentos");
 
-  Valor predeterminado:
-    consola. log("No te conozco");
-    quebrar;
+    if (userPIN === savedUsuario) {
+      alert("Ingreso exitoso");
+      ingresar = true;
+      break;
+    } else {
+      alert("Error. Te quedan " + i + " intentos");
+    }
+  }
+  return ingresar;
 }
+
+//console.log(login());
+let exito = login();
+//console.log(exito);
+//Estoy dentro del sistema de stock de la empresa
+if (exito) {
+  //Ingresamos a la informacion del stock de un articulo determinado en este caso Libro 1
+  let stock= 1240;
+
+  let opcion = prompt(
+    "Operacion de movimiento de stock del libro 1: \n1- stock \n2 - Venta \n3 - Devolucion \nPresioná X para finalizar."
+  );
+
+  while (opcion != "X" && opcion != "x") {
+    switch (opcion) {
+      case "1":
+        alert("Stock en unidades del libro 1 " + stock);
+        break;
+      case "2":
+        let venta = parseInt(prompt("Ingresa cantidad en unidades de venta del libro 1"));
+
+        if (venta <= stock) {
+          stock = stock - venta;
+          alert("Vendiste" + venta + " Tu nuevo stock en unidades del lirbo 1 es " + stock);
+        } else {
+          alert("Articulo sin stock");
+        }
+        break;
+      case "3":
+        let Devolucion = parseInt(prompt("Ingresa cantidad en unidades a devolver del lirbo 1 "));
+
+        stock = stock + Devolucion;
+        alert("Tu nuevo stock en unidades del libro 1 es " + stock);
+
+        break;
+
+      default:
+        alert("opcion no valida");
+        break;
+    }
+
+    //condicion de salida del while
+    opcion = prompt(
+      "Operacion de movimiento de stock del libro 1: \n1- stock \n2 - Venta \n3 - Devolucion \nPresioná X para finalizar."
+  );
+  }
+} else {
+  alert("Comunicate con departamento de compras");
+}
+alert("Tu operacion ha sido exitosa");
